@@ -1,0 +1,12 @@
+<%= form_with(model: @asset, local: true) do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  
+    <%= form.submit "Upload Asset" %>
+<% end %>
