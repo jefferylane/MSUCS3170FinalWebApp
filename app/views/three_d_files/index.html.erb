@@ -1,0 +1,9 @@
+<h1>3D Files</h1>
+<%= link_to 'Upload New 3D File', new_three_d_file_path %>
+<ul>
+  <% @three_d_files.each do |file| %>
+    <li>
+      <%= link_to file.name, file %>
+    </li>
+  <% end %>
+</ul>

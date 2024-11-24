@@ -1,0 +1,3 @@
+<!-- app/views/three_d_files/show.html.erb -->
+<h1><%= @three_d_file.name %></h1>
+<%= link_to 'Download', rails_blob_path(@three_d_file.file, disposition: "attachment") %>

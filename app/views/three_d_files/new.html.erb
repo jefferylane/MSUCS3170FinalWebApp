@@ -1,0 +1,26 @@
+<%= form_with(model: @three_d_file, local: true) do |form| %>
+  <% if @three_d_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@three_d_file.errors.count, "error") %> prohibited this three_d_file from being saved:</h2>
+      <ul>
+        <% @three_d_file.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

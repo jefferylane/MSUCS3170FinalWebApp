@@ -7,26 +7,10 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <nav>
-      <h1><%= link_to "3D Asset Catalog", root_path %></h1>
-      <% if user_signed_in? %>
-        <p>
-          Hi, <%= current_user.email %>!
-          <%= link_to "Account", edit_user_registration_path %> |
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to "Sign In", new_user_session_path %> |
-          <%= link_to "Sign Up", new_user_registration_path %>
-        </p>
-      <% end %>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
