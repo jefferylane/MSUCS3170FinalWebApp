@@ -1,3 +1,17 @@
 <!-- app/views/three_d_files/show.html.erb -->
 <h1><%= @three_d_file.name %></h1>
 <%= link_to 'Download', rails_blob_path(@three_d_file.file, disposition: "attachment") %>
+
+<div 
+  data-controller="three-d-preview"
+  data-three-d-preview-url-value="<%= rails_blob_path(@three_d_file.file) %>"
+  data-three-d-preview-container-id-value="preview-<%= @three_d_file.id %>"
+  class="preview-container" 
+  id="preview-<%= @three_d_file.id %>" 
+  style="width: 800px; height: 600px;">
+</div>
+
+<!-- Load Three.js and required modules -->
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" %>
+<%= javascript_include_tag "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" %>
+<%= javascript_include_tag "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" %>

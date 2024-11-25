@@ -1,9 +1,29 @@
-<h1>3D Files</h1>
-<%= link_to 'Upload New 3D File', new_three_d_file_path %>
-<ul>
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>3D Files</h1>
+      <%= link_to 'Upload New 3D File', new_three_d_file_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <% @three_d_files.each do |file| %>
-    <li>
-      <%= link_to file.name, file %>
-    </li>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div 
+          data-controller="three-d-preview"
+          data-three-d-preview-url-value="<%= rails_blob_path(file.file) %>"
+          data-three-d-preview-container-id-value="preview-<%= file.id %>"
+          class="preview-container" 
+          id="preview-<%= file.id %>" 
+          style="height: 200px;">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= file.name %></h5>
+          <%= link_to 'View Details', file, class: 'btn btn-sm btn-info' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
