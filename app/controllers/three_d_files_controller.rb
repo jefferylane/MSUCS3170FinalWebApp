@@ -1,7 +1,7 @@
 class ThreeDFilesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_three_d_file, only: [:show, :update, :destroy]
-  before_action :check_authorization, only: [:update, :destroy]
+  before_action :set_three_d_file, only: [:show, :edit, :update, :destroy]
+  before_action :check_authorization, only: [:edit, :update, :destroy]
 
   def index
     @three_d_files = ThreeDFile.all
@@ -14,13 +14,19 @@ class ThreeDFilesController < ApplicationController
   def create
     @three_d_file = current_user.three_d_files.build(three_d_file_params)
     if @three_d_file.save
-      redirect_to @three_d_file, notice: '3D file was successfully uploaded.'
+      redirect_to @three_d_file, notice: 'ThreeDFile was successfully created.'
     else
+      Rails.logger.debug @three_d_file.errors.full_messages.to_sentence
       render :new
     end
   end
 
   def show
+    @file_size = @three_d_file.file.byte_size
+    @file_type = @three_d_file.file.content_type
+  end
+
+  def edit
   end
 
   def update
@@ -49,6 +55,6 @@ class ThreeDFilesController < ApplicationController
   end
 
   def three_d_file_params
-    params.require(:three_d_file).permit(:name, :file)
+    params.require(:three_d_file).permit(:name, :description, :file)
   end
 end

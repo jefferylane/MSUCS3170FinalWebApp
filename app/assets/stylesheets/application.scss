@@ -13,12 +13,45 @@
  *= require_tree .
  *= require_self
  */
+ 
+@import "variables";
 @import "bootstrap";
+
+// Global styles
+body {
+  background-color: #22223b; // Light gray background
+  color: #f2e9e4; // Dark gray text color
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f2e9e4; // Bootstrap primary color for headings
+}
+
+.navbar {
+  background-color: #4a4e69; // Dark background for navbar
+  .navbar-brand {
+    color: #f2e9e4; // White text for navbar brand
+  }
+  .nav-link {
+    color: #f2e9e4; // White text for navbar links
+  }
+}
+
+.card {
+  background-color: #4a4e69; // White background for cards
+  border: 1px solid #9a8c98; // Light gray border for cards
+  .card-title {
+    color: #f2e9e4; // Bootstrap primary color for card titles
+  }
+  .card-text {
+    color: #f2e9e4; // Bootstrap secondary color for card text
+  }
+}
 
 .preview-container {
   position: relative;
   width: 100%;
-  background: #f0f0f0;
+  background: #4a4e69;
   overflow: hidden;
   
   canvas {
@@ -33,4 +66,26 @@
     border-top-left-radius: $card-border-radius;
     border-top-right-radius: $card-border-radius;
   }
+}
+
+.avatar-img {
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the entire area */
+}
+
+.three-d-file-description,
+.three-d-file-details {
+  color: #f2e9e4; // Light text color
+}
+
+a {
+  color: #f2e9e4; // Light text color for links
+  text-decoration: none; // Remove underline from links
+}
+
+a:hover {
+  color: #c9ada7; // Different color for links on hover
+  text-decoration: underline; // Underline links on hover
 }

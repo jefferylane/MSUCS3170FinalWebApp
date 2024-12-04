@@ -1,14 +1,41 @@
 <!-- app/views/three_d_files/show.html.erb -->
-<h1><%= @three_d_file.name %></h1>
-<%= link_to 'Download', rails_blob_path(@three_d_file.file, disposition: "attachment") %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4"><%= @three_d_file.name %></h1>
+      <p>By <%= link_to @three_d_file.user.username, users_user_path(@three_d_file.user), aria: { label: 'View User Profile' } %></p>
+    </div>
+  </div>
 
-<div 
-  data-controller="three-d-preview"
-  data-three-d-preview-url-value="<%= rails_blob_path(@three_d_file.file) %>"
-  data-three-d-preview-container-id-value="preview-<%= @three_d_file.id %>"
-  class="preview-container" 
-  id="preview-<%= @three_d_file.id %>" 
-  style="width: 800px; height: 600px;">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4" aria-label="3D File Preview Card">
+        <div class="card-body">
+          <div 
+            data-controller="three-d-preview"
+            data-three-d-preview-url-value="<%= rails_blob_path(@three_d_file.file) %>"
+            data-three-d-preview-container-id-value="preview-<%= @three_d_file.id %>"
+            class="preview-container mb-4" 
+            id="preview-<%= @three_d_file.id %>" 
+            style="width: 100%; height: 400px;"
+            aria-label="3D Preview Container">
+          </div>
+          <%= link_to 'Download', rails_blob_path(@three_d_file.file, disposition: "attachment"), class: "btn btn-primary", aria: { label: 'Download 3D File' } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column for details -->
+    <div class="col-md-8">
+      <div class="card mb-4" aria-label="3D File Details Card">
+        <div class="card-body">
+          <p class="three-d-file-description" aria-label="3D File Description"><%= @three_d_file.description %></p>
+          <p class="three-d-file-details" aria-label="3D File Size">File Size: <%= number_to_human_size(@file_size) %></p>
+          <p class="three-d-file-details" aria-label="3D File Type">File Type: <%= human_readable_file_type(@file_type) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Load Three.js and required modules -->

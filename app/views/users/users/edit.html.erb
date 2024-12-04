@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Edit Profile</h2>
+
+          <%= form_for(@user, url: profile_path, html: { multipart: true, aria: { label: 'Edit Profile Form' } }) do |f| %>
+            <div class="mb-3">
+              <%= f.label :avatar, class: 'form-label', aria: { label: 'Avatar' } %>
+              <%= f.file_field :avatar, class: 'form-control', aria: { label: 'Avatar Input' } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :username, class: 'form-label', aria: { label: 'Username' } %>
+              <%= f.text_field :username, class: 'form-control', aria: { label: 'Username Input' } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :email, class: 'form-label', aria: { label: 'Email' } %>
+              <%= f.email_field :email, class: 'form-control', aria: { label: 'Email Input' } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :bio, class: 'form-label', aria: { label: 'Bio' } %>
+              <%= f.text_area :bio, class: 'form-control', rows: 5, aria: { label: 'Bio Input' } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.submit 'Update Profile', class: 'btn btn-primary', aria: { label: 'Update Profile' } %>
+              <%= link_to 'Cancel', profile_path, class: 'btn btn-secondary', aria: { label: 'Cancel' } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

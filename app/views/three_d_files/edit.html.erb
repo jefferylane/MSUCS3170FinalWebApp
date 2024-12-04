@@ -1,7 +1,7 @@
-<%= form_with(model: @three_d_file, local: true, html: { class: 'form-horizontal' }) do |form| %>
+<%= form_with(model: @three_d_file, local: true, html: { class: 'form-horizontal', aria: { label: 'Edit 3D File Form' } }) do |form| %>
   <% if @three_d_file.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <h2><%= pluralize(@three_d_file.errors.count, "error") %> prohibited this three_d_file from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger" aria-live="assertive">
+      <h2><%= pluralize(@three_d_file.errors.count, "error") %> prohibited this 3D file from being saved:</h2>
       <ul>
         <% @three_d_file.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= form.submit class: 'btn btn-primary', aria: { label: 'Submit New 3D File' } %>
+      <%= form.submit 'Update 3D file', class: 'btn btn-primary', aria: { label: 'Update 3D File' } %>
     </div>
   </div>
 <% end %>
